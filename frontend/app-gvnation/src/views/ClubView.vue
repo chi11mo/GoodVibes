@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <!DOCTYPE html>
   <html lang="en">
@@ -15,53 +16,53 @@
 
   <body>
   <div id="player-list">
-  <h1>Clubübersicht</h1>
-  <h2>SAISON 2021-2022</h2>
-  <!-- partial:index.partial.html -->
-  <!-- Font | Optional-->
-  <div class="container">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
-    <!-- Wrapper | For this page - !!ignore-->
-    <div  v-for="currentPlayer in players">
-      <div class="wrapper">
-        <!-- *** fut-player-card ***-->
-        <div class="fut-player-card">
-          <!-- Player Card Top-->
-          <div class="player-card-top">
-            <div class="player-master-info">
-              <div class="player-rating"><span>{{currentPlayer.id}}</span></div>
-              <div class="player-position"><span>RW</span></div>
-              <div class="player-nation"></div>
-              <div class="player-club"></div>
-            </div>
+    <h1>Clubübersicht</h1>
+    <h2>SAISON 2021-2022</h2>
+    <!-- partial:index.partial.html -->
+    <!-- Font | Optional-->
+    <div class="container">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
+      <!-- Wrapper | For this page - !!ignore-->
+      <div v-for="currentPlayer in players">
+        <div class="wrapper">
+          <!-- *** fut-player-card ***-->
+          <div class="fut-player-card">
+            <!-- Player Card Top-->
+            <div class="player-card-top">
+              <div class="player-master-info">
+                <div class="player-rating"><span>{{ currentPlayer.id }}</span></div>
+                <div class="player-position"><span>RW</span></div>
+                <div class="player-nation"></div>
+                <div class="player-club"></div>
+              </div>
 
-            <div class="player-picture"><img  id="twitchProfileImg" :src="currentPlayer?.imgUrl"
-                                             draggable="false"/>
-
-              <div class="player-extra"><span></span><span></span></div>
+              <div class="player-picture"><img id="twitchProfileImg" :src="currentPlayer?.imgUrl"
+                                               draggable="false"/>
+                <div class="player-extra"><span></span><span></span></div>
+              </div>
             </div>
-          </div>
-          <!-- Player Card Bottom-->
-          <div class="player-card-bottom">
-            <div class="player-info">
-              <!-- Player Name-->
-              <div class="player-name"><span>{{currentPlayer?.name}}</span></div>
-              <!-- Player Features-->
-              <div class="player-features">
-                <div class="player-features-col"><span>
+            <!-- Player Card Bottom-->
+            <div class="player-card-bottom">
+              <div class="player-info">
+                <!-- Player Name-->
+                <div class="player-name"><span>{{ currentPlayer?.name }}</span></div>
+                <!-- Player Features-->
+                <div class="player-features">
+                  <div class="player-features-col"><span>
               <div class="player-feature-value">TWITCH</div>
               <div class="player-feature-title"></div></span><span>
               <div class="player-feature-value">DISCORD</div>
               <div class="player-feature-title"></div></span><span>
               <div class="player-feature-value">PSN</div>
               <div class="player-feature-title"></div></span></div>
-                <div class="player-features-col"><span>
-              <div class="player-feature-value"><a href="https://www.twitch.tv/">{{currentPlayer.twitch}}</a></div>
+                  <div class="player-features-col"><span>
+              <div class="player-feature-value"><a href="https://www.twitch.tv/">{{ currentPlayer.twitch }}</a></div>
               <div class="player-feature-title"></div></span><span>
-              <div class="player-feature-value">{{currentPlayer?.discord}}</div>
+              <div class="player-feature-value">{{ currentPlayer?.discord }}</div>
               <div class="player-feature-title"></div></span><span>
-              <div class="player-feature-value">{{currentPlayer?.psn}}</div>
+              <div class="player-feature-value">{{ currentPlayer?.psn }}</div>
               <div class="player-feature-title"></div></span></div>
+                </div>
               </div>
             </div>
           </div>
@@ -69,21 +70,16 @@
       </div>
     </div>
   </div>
-  </div>
-
   </body>
-
   </html>
-
 </template>
-
 <script>
+
 import PlayerService from "../services/PlayerService";
 
 export default {
   name: "players-list",
   data() {
-
     return {
       players: [],
       twitchUrl: "https://www.twitch.tv/",
@@ -95,7 +91,7 @@ export default {
   async mounted() {
     this.retrievePlayers();
   },
-  async beforeMount(){
+  async beforeMount() {
     this.retrievePlayers();
   },
   async created() {
@@ -104,13 +100,13 @@ export default {
   methods: {
     retrievePlayers() {
       PlayerService.getPlayer()
-          .then(response => {
-            this.players = response.data;
-            console.log(response.data);
-          })
-          .catch(e => {
-            console.log(e);
-          });
+        .then(response => {
+          this.players = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
     refreshList() {
       this.retrievePlayers();
@@ -121,27 +117,25 @@ export default {
       this.currentPlayer = player;
       this.currentIndex = index;
     },
-
   }
 };
 </script>
 <style>
-h1{
-
-  color:black;
+h1 {
+  color: black;
 }
-h2{
+
+h2 {
   font-size: 1rem;
   color: black;
 }
+
 body {
   padding-top: 60px;
   font-family: "Saira Semi Condensed", sans-serif;
   font-weight: 400;
   background-color: white;
-
 }
-
 
 .container {
   display: grid;
@@ -154,7 +148,7 @@ body {
 .fut-player-card {
   width: 300px;
   height: 485px;
-  background-image: url(../src/assets/red-card.png);
+  /**background-image: url('../src/assets/redcard.png');**/
   background-position: center center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -305,11 +299,9 @@ body {
 
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span .player-feature-title {
   font-weight: 300;
-
 }
 
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col:last-child {
   border: 0;
 }
-
 </style>
