@@ -1,4 +1,4 @@
-package gpse_1_2.access;
+package com.example.FootbalLeague;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

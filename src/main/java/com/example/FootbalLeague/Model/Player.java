@@ -4,7 +4,14 @@ package com.example.FootbalLeague.Model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import com.example.FootbalLeague.security.PasswordConfig;
+import com.example.FootbalLeague.service.ClubService;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "players")
 public class Player implements Serializable {
@@ -13,94 +20,55 @@ public class Player implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private String name;
-    private String email;
-    private String discord;
     private String twitch;
+    private String eMail;
+    private String discord;
     private String psn;
+    private String steam;
     private String imgUrl;
+
+    @Lob
+    @Column
+    private String password;
+
+    @OneToOne
+    private Club club;
+
+    private Role role;
+
+    private boolean isActive;
     @Column(nullable = false, updatable = false)
     private String playerCode;
 
-
-    public Player(Long id, String name, String email, String discord, String twitch, String psn, String imgUrl, String playerCode) {
+    public Player(Long id, String eMail, String password, String discord, String twitch, String steam, String psn, String imgUrl, Club club, boolean isActive, String playerCode) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.eMail = eMail;
         this.discord = discord;
         this.twitch = twitch;
         this.psn = psn;
+        this.steam = steam;
         this.imgUrl = imgUrl;
         this.playerCode = playerCode;
+        this.password = password;
+        this.role = Role.PLAYER;
+        this.isActive = true;
+        this.club =null;
 
+    }
+
+
+    public Player(String eMail, String password, String discord, String twitch, String steam, String psn) {
+
+        this(null, eMail, password, discord, twitch, steam, psn, null, null, true, null);
     }
 
     public Player() {
 
     }
 
-    public Long getId() {
-        return id;
+    public void setIsEnabled(boolean isActive) {
+        this.isActive = true;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDiscord() {
-        return discord;
-    }
-
-    public void setDiscord(String discord) {
-        this.discord = discord;
-    }
-
-    public String getTwitch() {
-        return twitch;
-    }
-
-    public void setTwitch(String twitch) {
-        this.twitch = twitch;
-    }
-
-    public String getPsn() {
-        return psn;
-    }
-
-    public void setPsn(String psn) {
-        this.psn = psn;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public void setPlayerCode(String playerCode) {
-        this.playerCode = playerCode;
-    }
-
-    public String getPlayerCode() {
-        return playerCode;
-    }
 
 }

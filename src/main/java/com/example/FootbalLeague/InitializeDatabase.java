@@ -1,54 +1,62 @@
-package gpse_1_2.access;
+package com.example.FootbalLeague;
 
-import gpse_1_2.access.user.domain.Faculty;
 
-import gpse_1_2.access.user.domain.Role;
-import gpse_1_2.access.user.domain.User;
-import gpse_1_2.access.user.service.FacultyService;
-import gpse_1_2.access.user.service.RoleService;
-import gpse_1_2.access.user.service.UserService;
+import com.example.FootbalLeague.Model.Club;
+import com.example.FootbalLeague.Model.Game;
+import com.example.FootbalLeague.Model.Player;
+import com.example.FootbalLeague.service.ClubService;
+import com.example.FootbalLeague.service.GameService;
+import com.example.FootbalLeague.service.PlayerService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 
 @Service
 public class InitializeDatabase implements InitializingBean {
-
-    private final FacultyService facultyService;
-    private final RoleService roleService;
-    private final UserService userService;
+    private final PlayerService playerService;
+    private final ClubService clubService;
+    private final GameService gameService;
 
     @Autowired
-    public InitializeDatabase(final FacultyService facultyService, final RoleService roleService,
-                              final UserService userService) {
-        this.facultyService = facultyService;
-        this.roleService = roleService;
-        this.userService = userService;
+    public InitializeDatabase(final PlayerService playerService, final ClubService clubService, final GameService gameService) {
+        this.playerService = playerService;
+        this.clubService = clubService;
+        this.gameService = gameService;
+
+
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        if (facultyService.getFaculties().size() == 0) {
-            facultyService.addFacultyIfNotExisting("faculty of test 1");
-            facultyService.addFacultyIfNotExisting("faculty of test 2");
+        if (playerService.findAllPlayers().size() == 0) {
+          //  Club club;
+          //  club = new Club("chi11mo");
+           // clubService.addClub(club);
+            playerService.addPlayer(new Player("dominic.w@gmx.de", "password123", "chi11mo", "chi11mo", "chimo", "psn"));
+          //  club = new Club("PesCoach");
+            playerService.addPlayer(new Player("pesCoach@gmx.de", "password123", "PesCoach", "PesCoach", "chimo", "psn"));
+
+            playerService.addPlayer(new Player("jonhDoe@gmx.de", "password123", "JohnDoe", "Thijs", "johndong", "johnnyrakette"));
+
+            playerService.addPlayer(new Player("MaximillianPrecht@gmx.de", "password123", "MaxDax", "TFBlade", "kew", "kew"));
+
+            playerService.addPlayer(new Player("ChefderMustermann@gmx.de", "password123", "KEww", "amouranth", "kukuw", "playstationstinkt"));
         }
 
-        if (roleService.getRoles().size() == 0) {
-            roleService.addRoleIfNotExisting("Administrator*in");
-            roleService.addRoleIfNotExisting("Fakultätsbeauftragte*r");
-            roleService.addRoleIfNotExisting("Mitarbeiter*innen");
-            roleService.addRoleIfNotExisting("Kursverantwortliche*r");
+
+        if (gameService.findAllGames().size() == 0) {
+
+
+            gameService.addGame(new Game("chi11mo", "JohnDoe", 1, "Febuary", 2022));
+
+            gameService.addGame(new Game("PesCoach", "MaxDax", 10, "March", 2022));
+
+            gameService.addGame(new Game("KEww", "PesCoach", 10, "March", 2022));
         }
-        if (userService.findAllUser().size() == 0) {
-            userService.addUser(new User(50L, "Jan", "Mustermann",
-                "jmusterman@google.com", "paswort123",
-                null, null, null,
-                null, 2));
-        }
+
     }
+
+
 }

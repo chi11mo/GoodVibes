@@ -2,7 +2,13 @@ package com.example.FootbalLeague.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "club")
 public class Club implements Serializable {
@@ -11,22 +17,32 @@ public class Club implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-
+    @Column
     private String team;
+    @Column
     private int plays;
+    @Column
     private int wins;
+    @Column
     private int loses;
+    @Column
     private int defines;
+    @Column
     private int goals;
+    @Column
     private int goalsAgainst;
+    @Column
     private int goalDiff;
+    @Column
     private int points;
+    @Column
+    private boolean active;
 
+    @ManyToMany
+    private List<Game> game;
 
     @Column(nullable = false, updatable = false)
     private String clubCode;
-
-
 
 
     public Club(long id, String team, int plays, int wins, int loses, int defines, int goals, int goalsAgainst, int goalDiff, int points, String clubCode) {
@@ -40,96 +56,27 @@ public class Club implements Serializable {
         this.goalsAgainst = goalsAgainst;
         this.goalDiff = goalDiff;
         this.points = points;
+        this.active = false;
         this.clubCode = clubCode;
+    }
+
+    public Club(String team) {
+
+        this.team = team;
+        this.plays = 0;
+        this.wins = 0;
+        this.loses = 0;
+        this.defines = 0;
+        this.goals = 0;
+        this.goalsAgainst = 0;
+        this.goalDiff = 0;
+        this.points = 0;
+        this.active = false;
+
+
     }
 
     public Club() {
 
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public int getPlays() {
-        return plays;
-    }
-
-    public void setPlays(int plays) {
-        this.plays = plays;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public int getLoses() {
-        return loses;
-    }
-
-    public void setLoses(int loses) {
-        this.loses = loses;
-    }
-
-    public int getDefines() {
-        return defines;
-    }
-
-    public void setDefines(int defines) {
-        this.defines = defines;
-    }
-
-    public int getGoals() {
-        return goals;
-    }
-
-    public void setGoals(int goals) {
-        this.goals = goals;
-    }
-
-    public int getGoalsAgainst() {
-        return goalsAgainst;
-    }
-
-    public void setGoalsAgainst(int goalsAgainst) {
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    public int getGoalDiff() {
-        return goalDiff;
-    }
-
-    public void setGoalDiff(int goalDiff) {
-        this.goalDiff = goalDiff;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public String getClubCode() {
-        return clubCode;
-    }
-
-    public void setClubCode(String clubCode) {
-        this.clubCode = clubCode;
     }
 }
