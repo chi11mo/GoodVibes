@@ -14,13 +14,15 @@ class GameService {
     deleteGameById(id) {
         return axios.delete(API_URL + "/game/delete/" + id);
     }
-    updateGame(id, data) {
+
+    updateGame(data) {
         console.log(data)
-        return axios.put(API_URL +"/game/update", data);
+        return axios.put(API_URL + "/game/update", data);
     }
-    registerGame(data){
+
+    registerGame(data) {
         console.log(data)
-        return axios.post(API_URL +"/game/add", data);
+        return axios.post(API_URL + "/game/add", data);
     }
 }
 

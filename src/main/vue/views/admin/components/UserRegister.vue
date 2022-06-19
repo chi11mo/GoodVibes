@@ -113,5 +113,10 @@ export default {
 </script>
 
 <style scoped>
-
+.q-pa-md {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
 </style>

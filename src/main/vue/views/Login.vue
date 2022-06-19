@@ -90,6 +90,9 @@ export default {
 
 
 <style scoped>
+.q-page {
+    background-color: #333333;
+}
 .col {
     padding: 0.3em;
 }

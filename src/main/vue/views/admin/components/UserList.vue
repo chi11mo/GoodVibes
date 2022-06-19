@@ -11,14 +11,17 @@
                 @click="()=> toggleRegister(1)"
             />
             <!-- Search field to filter Users with text input --->
-            <q-input class="search-input" outlined v-model="search" label="Suche" v-on:keyup="filterUser"/>
+            <q-input class="search-input" outlined v-model="search" label="Suche" v-on:keyup="filterUser" color="white"/>
             <!-- Table to show up Users with Name Email and Role  --->
             <q-table class="user-table"
                      title="Mitglieder"
                      :rows="filteredUsers"
                      :data="filteredUsers"
                      :columns="columns"
-                     row-key="name">
+                     row-key="name"
+                     :rowsPerPage=0
+                     rows-per-page-label ="Zeilen Pro Seite"
+                     :rows-per-page-options="[10, 20,40]">
 
                 <template v-slot:body-cell-action="props">
                     <q-td :props="props">
@@ -186,6 +189,7 @@ export default {
     width: 25%;
     margin-left: auto;
     margin-right: auto;
+    background-color: aliceblue;
 }
 
 .user-table {

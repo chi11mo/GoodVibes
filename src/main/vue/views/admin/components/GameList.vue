@@ -19,7 +19,10 @@
                  :rows="filteredGames"
                  :data="filteredGames"
                  :columns="columns"
-                 row-key="name">
+                 row-key="name"
+                 :rowsPerPage=0
+                 rows-per-page-label ="Zeilen Pro Seite"
+                 :rows-per-page-options="[10, 20,40]">
 
 
             <template v-slot:top-right>
@@ -207,6 +210,7 @@ export default {
 </script>
 
 <style scoped>
+
 .q-pa-md {
     margin-top: 10%;
     margin-left: auto;
@@ -218,6 +222,7 @@ export default {
     width: 25%;
     margin-left: auto;
     margin-right: auto;
+    background-color: aliceblue;
 }
 
 .user-table {

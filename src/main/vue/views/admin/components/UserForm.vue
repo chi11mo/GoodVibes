@@ -1,13 +1,13 @@
 <template>
     <q-page-container>
-        <h1>
-            {{ user.twitch }}
-        </h1>
-        <h2> zu Bearbeiten</h2>
-        <div class="q-pa-md" style="max-width: 400px">
-            <!-- Form to set up Name , Email , Role or faculties. -->
+
+
+        <div class="q-pa-md" >
+
+            <q-card-section>
             <q-form
                 class="q-gutter-md"
+                color="white"
             >
                 <q-input
                     filled:value="text"
@@ -16,6 +16,7 @@
                     hint="Twitch"
                     model-value="text"
                     lazy-rules
+                    color="white"
                     :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
                 >
                 </q-input>
@@ -65,11 +66,13 @@
                 <q-select v-model="user.role" :options="roles" :option-value="'id'" :option-label="'name'" label="Rolle"/>
                 -->
                 <div>
-                    <q-btn label="Speichern" type="submit" @click="onSubmit()" color="primary"/>
+                    <q-btn  label="Speichern" type="submit" @click="onSubmit()" color="primary"/>
                     <q-btn label="Zurueck" type="back" color="primary" flat class="q-ml-sm"/>
                 </div>
             </q-form>
+            </q-card-section>
         </div>
+
     </q-page-container>
 </template>
 
@@ -161,6 +164,9 @@ export default {
 
 <style scoped>
 
+.q-gutter-md{
+   color: #9C27B0;
+}
 .q-pa-md {
     margin-top: 10%;
     margin-left: auto;

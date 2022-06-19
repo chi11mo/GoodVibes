@@ -1,8 +1,8 @@
 <template>
     <q-layout view="hHh lpR fFf">
-
-        <q-header elevated class="text-primary bg-white" height-hint="98">
-            <q-toolbar class="text-primary" transparent="true">
+<div class="navbar">
+        <q-header elevated class="text-primary bg-black" height-hint="98">
+            <q-toolbar class="text-grey" transparent="false" >
                 <q-btn stretch flat label="Home" @click="$router.push('home')"></q-btn>
                 <q-btn stretch flat label="Tabelle" @click="$router.push('')"></q-btn>
                 <q-btn stretch flat label="Liga" @click="$router.push('')"></q-btn>
@@ -45,11 +45,14 @@
         <q-page-container>
             <router-view/>
         </q-page-container>
-
+</div>
     </q-layout>
 </template>
 
 <style>
+.navbar{
+
+}
 </style>
 
 <script>

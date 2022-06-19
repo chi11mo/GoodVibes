@@ -1,6 +1,6 @@
 <template>
     <q-page-container>
-        <q-btn label="Button"  @click="onSubmit()" color="primary"/>
+        <!--q-btn label="Button"  @click="onSubmit()" color="primary"/-->
         <h1>
 
         </h1>
@@ -32,34 +32,19 @@
                     lazy-rules
                     :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
                 />
-
-                <q-input
-                    filled:value="number"
-                    v-model="game.day"
-                    label="Tag"
-                    hint="Tag"
-                    model-value="number"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
-                />
-                <q-input
-                    filled:value="text"
-                    v-model="game.month"
-                    label="Monat"
-                    hint="Monat"
-                    model-value="text"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
-                />
-                <q-input
-                    filled:value="number"
-                    v-model="game.year"
-                    label="Jahr"
-                    hint="Jahr"
-                    model-value="number"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
-                />
+                <q-input filled v-model="date" mask="date" :rules="['date']">
+                    <template v-slot:append>
+                        <q-icon name="event" class="cursor-pointer">
+                            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                <q-date v-model="date">
+                                    <div class="row items-center justify-end">
+                                        <q-btn v-close-popup label="Close" color="primary" flat/>
+                                    </div>
+                                </q-date>
+                            </q-popup-proxy>
+                        </q-icon>
+                    </template>
+                </q-input>
 
 
                 <q-toggle v-model="game.played" label="Wurde das Spiel ausgetragen?"/>
@@ -80,10 +65,11 @@
 <script>
 import ClubService from "../../../api/services/ClubService";
 import GameService from "../../../api/services/GameService";
+import Formatter from "../../../controller/Formatter";
+import {ref} from "vue";
 
 export default {
     name: "GameRegister",
-
 
     data() {
         return {
@@ -95,7 +81,17 @@ export default {
                 year: '',
             },
             clubsNames: [],
-            clubs: []
+            clubs: [],
+        }
+    },
+    setup() {
+
+        const date = ref('2022/06/01');
+        const proxyDate = ref('2022/06/01')
+
+        return {
+            date,
+            proxyDate,
         }
     },
 
@@ -134,9 +130,9 @@ export default {
          * @param evt event after click SubmitButton
          */
         async onSubmit(evt) {
-            console.log(this.game.played)
-            GameService.registerGame( this.game).then(response => {
-                 console.log(response.data)
+            Formatter.dateFormatter(new Date(this.date), this.game)
+            GameService.registerGame(this.game).then(response => {
+                console.log(response.data)
                 ClubService.registerGame(response.data);
             })
                 .catch(e => {

@@ -1,7 +1,9 @@
 <template>
+    <q-page padding>
     <main>
         <GameList :games="games"/>
     </main>
+    </q-page>
 </template>
 
 <script>

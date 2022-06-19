@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div class="grid-container">
         <div class="row">
-            <div v-for="game in games" class="col-md-6 col-xl-3">
+            <div v-for="game in this.currentLastGames" class="col-md-6 col-xl-3">
                 <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                     <ul class="event-list">
                         <li>
@@ -12,9 +12,9 @@
                                 <span class="time">ALL DAY</span>
                             </time>
                             <div class="info">
-                                <h2 class="title">{{ game.clubId1 }} </h2>
+                                <h2 class="title">{{ game.clubNameOne }} </h2>
                                 <p class="desc">VS</p>
-                                <h2 class="title">{{ game.clubId2 }}</h2>
+                                <h2 class="title">{{ game.clubNameTwo }}</h2>
                                 <p class="desc"></p>
                             </div>
                             <div class="social">
@@ -40,21 +40,38 @@
             </div>
         </div>
     </div>
-    </div>
 </template>
 
 <script>
+
 export default {
-    name: "GameListPublic"
+    props: ["currentLastGames"],
+    name: "GameListPublic",
+
+    data() {
+        return {
+
+            title: "",
+            search: '',
+        };
+    },
 }
 </script>
 
 <style scoped>
 @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
-body {
-    padding: 60px 0px;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
 
+.q-card {
+    background-color: #f8f8f8;
+    box-shadow: 0 0 3px #666;
+    text-align: center;
 }
 
 .event-list {
@@ -62,9 +79,13 @@ body {
     font-family: 'Lato', sans-serif;
     margin: 0px;
     padding: 0px;
+height: 100%;
+    width: 100%;
+
 }
 .event-list > li {
-    background-color: rgb(255, 255, 255);
+    background-color: #1D1D1D;
+    color:rgb(255, 255, 255);
     box-shadow: 0px 0px 5px rgb(51, 51, 51);
     box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
     padding: 0px;
@@ -73,8 +94,8 @@ body {
 .event-list > li > time {
     display: inline-block;
     width: 100%;
-    color: rgb(255, 255, 255);
-    background-color: rgb(197, 44, 102);
+    color: #1D1D1D;
+    background-color: rgb(255, 255, 255);
     padding: 5px;
     text-align: center;
     text-transform: uppercase;
@@ -150,7 +171,7 @@ body {
 .event-list > li > .info > ul > li:hover,
 .event-list > li > .social > ul > li:hover {
     color: rgb(30, 30, 30);
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(255, 255, 255);
 }
 .facebook a,
 .twitter a,

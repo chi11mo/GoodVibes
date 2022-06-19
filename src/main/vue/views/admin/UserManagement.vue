@@ -1,9 +1,9 @@
 <template>
-
+    <q-page padding>
     <main>
         <UserList :users="users"/>
     </main>
-
+    </q-page>
 </template>
 
 <script>

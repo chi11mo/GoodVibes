@@ -1,6 +1,6 @@
 <template>
     <!-- partial -->
-
+    <q-page padding>
     <body>
     <h1>Clubübersicht</h1>
     <h2>SAISON 2021-2022</h2>
@@ -66,6 +66,7 @@
 
 
     </body>
+    </q-page>
 </template>
 
 <script>
@@ -107,21 +108,24 @@ export default {
 </script>
 
 <style scoped>
+.q-page {
+    background-color: #333333;
+}
 h1 {
 
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 h2 {
     font-size: 1rem;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 body {
     padding-top: 60px;
     font-family: "Saira Semi Condensed", sans-serif;
     font-weight: 400;
-    background-color: white;
+
 
 }
 

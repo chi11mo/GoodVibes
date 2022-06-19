@@ -106,4 +106,17 @@ public class ClubService {
         }
         return null;
     }
+
+    public List<Club> findIsActiveClubs(boolean isActive) {
+        List<Club> clubList = (List<Club>) clubRepo.findAll();
+        List<Club> newClubList = null;
+        for(Club club: clubList){
+            // System.out.println(clubName  + club.getTeam());
+            if(club.isActive()==isActive){
+                //   System.out.println("successsssssss");
+               newClubList.add(club);
+            }
+        }
+        return newClubList;
+    }
 }
