@@ -70,7 +70,7 @@
 import GameService from "../../../api/services/GameService";
 import {ref} from "vue";
 import ClubService from "../../../api/services/ClubService";
-import Formatter from "../../../controller/Formatter";
+import Formatter from "../../../controller/formatter";
 
 import {date} from 'quasar'
 

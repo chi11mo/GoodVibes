@@ -62,10 +62,12 @@ export default {
 @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 .grid-container {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 10px;
-    grid-column-gap: 10px;
+
+
+
+
 }
 
 .q-card {

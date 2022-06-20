@@ -53,8 +53,11 @@ public class PlayerService {
 
         player.setPlayerCode(UUID.randomUUID().toString());
         player.setClub(clubService.addClub(new Club(player.getTwitch())));
-        player.setRole(Role.PLAYER);
-
+        if (player.getRole() == null) {
+            player.setRole(Role.PLAYER);
+        } else {
+            player.setRole(player.getRole());
+        }
         TwitchInteraction twitchInteraction = new TwitchInteraction();
         player.setImgUrl(String.valueOf(twitchInteraction.getUser(player.getTwitch()).get(0).getProfileImageUrl()));
 
@@ -109,6 +112,7 @@ public class PlayerService {
 
     /**
      * Service method to find a {@link Player} by eMail.
+     *
      * @param eMail for identify the searched {@link Player}.
      * @return the searched {@link Player}.
      */
@@ -118,7 +122,8 @@ public class PlayerService {
 
     /**
      * Service method to reset the given Password for the {@link Player}.
-     * @param token {@link Token}.
+     *
+     * @param token       {@link Token}.
      * @param newPassword the one.
      * @return response.
      */
@@ -130,7 +135,6 @@ public class PlayerService {
     }
 
     /**
-     *
      * @param token
      * @return
      */
@@ -153,6 +157,7 @@ public class PlayerService {
 
     /**
      * Service method to activated a {@link Player}.
+     *
      * @param player {@link Player}/
      */
     public void setPlayerIsEnabled(final Player player) {
@@ -162,8 +167,8 @@ public class PlayerService {
     }
 
     /**
-     *
      * Service method to find a {@link Player} by token.
+     *
      * @param tokenContent for identify the searched {@link Player}.
      * @return the searched {@link Player}.
      */

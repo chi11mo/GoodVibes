@@ -4,11 +4,9 @@ package com.example.FootbalLeague.Model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-import com.example.FootbalLeague.security.PasswordConfig;
-import com.example.FootbalLeague.service.ClubService;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Getter
 @Setter
@@ -40,7 +38,7 @@ public class Player implements Serializable {
     @Column(nullable = false, updatable = false)
     private String playerCode;
 
-    public Player(Long id, String eMail, String password, String discord, String twitch, String steam, String psn, String imgUrl, Club club, boolean isActive, String playerCode) {
+    public Player(Long id, String eMail, String password, String discord, String twitch, String steam, String psn, String imgUrl, Role role, Club club, boolean isActive, String playerCode) {
         this.id = id;
         this.eMail = eMail;
         this.discord = discord;
@@ -50,16 +48,17 @@ public class Player implements Serializable {
         this.imgUrl = imgUrl;
         this.playerCode = playerCode;
         this.password = password;
-        this.role = Role.PLAYER;
+        this.role = role;
         this.isActive = true;
-        this.club =null;
+        this.club = null;
 
     }
 
 
-    public Player(String eMail, String password, String discord, String twitch, String steam, String psn) {
 
-        this(null, eMail, password, discord, twitch, steam, psn, null, null, true, null);
+    public Player(String eMail, String password, String discord, String twitch, String steam, String psn, Role role) {
+
+        this(null, eMail, password, discord, twitch, steam, psn, null, role, null, true, null);
     }
 
     public Player() {
@@ -70,5 +69,20 @@ public class Player implements Serializable {
         this.isActive = true;
     }
 
-
+    /**
+     * public String getRoleString() {
+     * switch (getRole()) {
+     * case Role.PLAYER:
+     * return "Player";
+     * case Role.ADMIN:
+     * return "Admin";
+     * case Role.MODERATOR:
+     * return "Moderator";
+     * }
+     * return null;
+     * }
+     **/
+    public String getRoleString() {
+        return this.role.toString();
+    }
 }

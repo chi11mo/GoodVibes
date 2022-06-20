@@ -28,7 +28,8 @@ export const useStore = defineStore('users', () => {
             if (response.data !== '') {
                 persistAuthentication(response.data)
             }
-            localStorage.setItem('email',username)
+            localStorage.setItem('email', username)
+            localStorage.setItem('password', password)
         } catch (e) {
             authenticated.value = false
         }
@@ -38,7 +39,9 @@ export const useStore = defineStore('users', () => {
         authenticated.value = false
         localStorage.removeItem('token')
         axios.defaults.headers['Authorization'] = ""
+        localStorage.clear();
     }
+
     function getAllUsers() {
 
         return new Promise((resolve, reject) => {
@@ -51,11 +54,14 @@ export const useStore = defineStore('users', () => {
             })
         })
     }
-    function getCurrentUser() {
 
+    function getCurrentUser() {
         return new Promise((resolve, reject) => {
             UserService.getUserByEmail(localStorage.getItem('email')).then(res => {
                 currentUser.value = res.data
+                localStorage.setItem('username', currentUser.value.twitch)
+                localStorage.setItem('role', currentUser.value.role)
+
                 resolve()
             }).catch(() => {
                 currentUser.value = []
@@ -63,6 +69,7 @@ export const useStore = defineStore('users', () => {
             })
         })
     }
+
     function updateUser(user) {
         UserService.updateUser(user).then(res => {
             resolve()
@@ -92,6 +99,7 @@ export const useStore = defineStore('users', () => {
             return "FAIL"
         }
     }
+
     function logout() {
         authenticated.value = false
         localStorage.removeItem('token')

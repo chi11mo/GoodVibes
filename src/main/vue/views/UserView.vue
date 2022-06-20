@@ -52,7 +52,8 @@
               <div class="player-feature-title"></div></span><span>
               <div class="player-feature-value">{{ user?.discord }}</div>
               <div class="player-feature-title"></div></span><span>
-              <div class="player-feature-value">{{ user?.psn }}</div>
+              <div class="player-feature-value"><a
+                  href="https://psnprofiles.com/{{user.twitch}}">{{ user?.psn }}</a></div>
                                         <div class="player-feature-title"></div></span><span>
               <div class="player-feature-value">{{ user?.steam }}</div>
               <div class="player-feature-title"></div></span></div>
@@ -261,11 +262,15 @@ body {
     border-bottom: 2px solid rgba(233, 204, 116, 0.1);
     padding-bottom: 0.3rem;
     overflow: hidden;
+
+
+
 }
 
 .fut-player-card .player-card-bottom .player-info .player-name span {
     display: block;
     text-shadow: 2px 2px #111;
+
 }
 
 .fut-player-card .player-card-bottom .player-info .player-features {
@@ -277,6 +282,18 @@ body {
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col {
     border-right: 2px solid rgba(233, 204, 116, 0.1);
     padding: 0 2.3rem;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.fut-player-card .player-card-bottom .player-info .player-features .player-features-col:hover {
+    position: absolute;
+    color: white;
+    text-overflow: initial;
+    white-space: normal;
+    background-color: black;
+    display: block;
 }
 
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span {
@@ -297,5 +314,8 @@ body {
 
 .fut-player-card .player-card-bottom .player-info .player-features .player-features-col:last-child {
     border: 0;
+}
+a{
+    color: hotpink;
 }
 </style>

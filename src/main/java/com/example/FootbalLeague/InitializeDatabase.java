@@ -4,6 +4,7 @@ package com.example.FootbalLeague;
 import com.example.FootbalLeague.Model.Club;
 import com.example.FootbalLeague.Model.Game;
 import com.example.FootbalLeague.Model.Player;
+import com.example.FootbalLeague.Model.Role;
 import com.example.FootbalLeague.service.ClubService;
 import com.example.FootbalLeague.service.GameService;
 import com.example.FootbalLeague.service.PlayerService;
@@ -34,15 +35,15 @@ public class InitializeDatabase implements InitializingBean {
           //  Club club;
           //  club = new Club("chi11mo");
            // clubService.addClub(club);
-            playerService.addPlayer(new Player("dominic.w@gmx.de", "password123", "chi11mo", "chi11mo", "chimo", "psn"));
+            playerService.addPlayer(new Player("dominic.w@gmx.de", "password123", "chi11mo", "chi11mo", "chimo", "psn", Role.ADMIN));
           //  club = new Club("PesCoach");
-            playerService.addPlayer(new Player("pesCoach@gmx.de", "password123", "PesCoach", "PesCoach", "chimo", "psn"));
+            playerService.addPlayer(new Player("pesCoach@gmx.de", "password123", "PesCoach", "PesCoach", "chimo", "psn", Role.PLAYER));
 
-            playerService.addPlayer(new Player("jonhDoe@gmx.de", "password123", "JohnDoe", "Thijs", "johndong", "johnnyrakette"));
+            playerService.addPlayer(new Player("jonhDoe@gmx.de", "password123", "JohnDoe", "Thijs", "johndong", "johnnyrakette", Role.PLAYER));
 
-            playerService.addPlayer(new Player("MaximillianPrecht@gmx.de", "password123", "MaxDax", "TFBlade", "kew", "kew"));
+            playerService.addPlayer(new Player("MaximillianPrecht@gmx.de", "password123", "MaxDax", "TFBlade", "kew", "kew", Role.PLAYER));
 
-            playerService.addPlayer(new Player("ChefderMustermann@gmx.de", "password123", "KEww", "amouranth", "kukuw", "playstationstinkt"));
+            playerService.addPlayer(new Player("ChefderMustermann@gmx.de", "password123", "KEww", "amouranth", "kukuw", "playstationstinkt", Role.PLAYER));
         }
 
 

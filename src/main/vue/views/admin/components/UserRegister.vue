@@ -1,4 +1,5 @@
 <template>
+    <q-page padding>
     <q-page-container>
         <q-btn label="Button" @click="onSubmit()" color="primary"/>
         <h1>
@@ -72,6 +73,7 @@
             </q-form>
         </div>
     </q-page-container>
+    </q-page>
 </template>
 
 

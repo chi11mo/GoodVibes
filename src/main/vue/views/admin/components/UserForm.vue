@@ -1,79 +1,80 @@
 <template>
-    <q-page-container>
+    <q-page padding>
+        <q-page-container>
 
 
-        <div class="q-pa-md" >
+            <div class="q-pa-md">
 
-            <q-card-section>
-            <q-form
-                class="q-gutter-md"
-                color="white"
-            >
-                <q-input
-                    filled:value="text"
-                    v-model="user.twitch"
-                    label="Twitch"
-                    hint="Twitch"
-                    model-value="text"
-                    lazy-rules
-                    color="white"
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
-                >
-                </q-input>
-                <q-input
-                    filled:value="email"
-                    v-model="user.email"
-                    label="Email"
-                    hint="Email"
-                    model-value="email"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
-                />
-                <q-input
-                    filled:value="text"
-                    v-model="user.psn"
-                    label="PlayStationNetwork"
-                    hint="PlayStationNetwork"
-                    model-value="text"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden - setzen']"
-                />
+                <q-card-section>
+                    <q-form
+                        class="q-gutter-md"
+                    >
+                        <q-input
+                            filled:value="text"
+                            v-model="user.twitch"
+                            label="Twitch"
+                            hint="Twitch"
+                            model-value="text"
+                            lazy-rules
+                            color="white"
+                            :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
+                        >
+                        </q-input>
+                        <q-input
+                            filled:value="email"
+                            v-model="user.email"
+                            label="Email"
+                            hint="Email"
+                            model-value="email"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen']"
+                        />
+                        <q-input
+                            filled:value="text"
+                            v-model="user.psn"
+                            label="PlayStationNetwork"
+                            hint="PlayStationNetwork"
+                            model-value="text"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden - setzen']"
+                        />
 
 
-                <q-input
-                    filled:value="text"
-                    v-model="user.steam"
-                    label="Steam"
-                    hint="Steam"
-                    model-value="text"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden '-' setzen']"
-                />
+                        <q-input
+                            filled:value="text"
+                            v-model="user.steam"
+                            label="Steam"
+                            hint="Steam"
+                            model-value="text"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden '-' setzen']"
+                        />
 
-                <q-input
-                    filled:value="text"
-                    v-model="user.discord"
-                    label="Discord"
-                    hint="Discord"
-                    model-value="text"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden '-' setzen']"
-                />
+                        <q-input
+                            filled:value="text"
+                            v-model="user.discord"
+                            label="Discord"
+                            hint="Discord"
+                            model-value="text"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Bitte das Feld ausfuellen (nicht vorhanden '-' setzen']"
+                        />
 
-                <!--
-                <q-select v-model="user.faculty" :options="faculties" :option-value="'id'" :option-label="'name'"
-                          label="Fakultaet"/>
-                <q-select v-model="user.role" :options="roles" :option-value="'id'" :option-label="'name'" label="Rolle"/>
-                -->
-                <div>
-                    <q-btn  label="Speichern" type="submit" @click="onSubmit()" color="primary"/>
-                    <q-btn label="Zurueck" type="back" color="primary" flat class="q-ml-sm"/>
-                </div>
-            </q-form>
-            </q-card-section>
-        </div>
+                        <!--
+                        <q-select v-model="user.faculty" :options="faculties" :option-value="'id'" :option-label="'name'"
+                                  label="Fakultaet"/>
+                        <q-select v-model="user.role" :options="roles" :option-value="'id'" :option-label="'name'" label="Rolle"/>
+                        -->
+                        <div>
+                            <q-btn label="Speichern" type="submit" @click="onSubmit()" color="primary"/>
+                            <q-btn label="Zurueck" type="back" color="primary" flat class="q-ml-sm"/>
+                        </div>
+                    </q-form>
+                </q-card-section>
+            </div>
 
-    </q-page-container>
+        </q-page-container>
+    </q-page>
 </template>
 
 
@@ -164,22 +165,10 @@ export default {
 
 <style scoped>
 
-.q-gutter-md{
-   color: #9C27B0;
-}
 .q-pa-md {
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-}
-
-h1 {
-    text-align: center;
-    color: blue;
-}
-
-h2 {
-    text-align: center;
 }
 </style>

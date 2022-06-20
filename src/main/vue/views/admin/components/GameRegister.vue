@@ -65,7 +65,7 @@
 <script>
 import ClubService from "../../../api/services/ClubService";
 import GameService from "../../../api/services/GameService";
-import Formatter from "../../../controller/Formatter";
+import Formatter from "../../../controller/formatter";
 import {ref} from "vue";
 
 export default {
